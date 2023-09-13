@@ -1,0 +1,9 @@
+server:
+  port: 3000
+  shutdown: graceful
+
+spring:
+  thymeleaf:
+    cache: false
+    reactive:
+      max-chunk-size: 8192

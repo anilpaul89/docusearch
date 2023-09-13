@@ -1,0 +1,25 @@
+server:
+  port: 9000
+  shutdown: graceful
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: docusearch-indexer
+      auto-offset-reset: earliest
+      key-serializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+  elasticsearch:
+    uris: localhost:9200
+    socket-timeout: 20s
+
+docusearch:
+  system:
+    dropbox:
+      accessToken: sl.Bl-JIpzuskVR_f6GJ3An0tAZrHIZYtYBo1uUkCY_au5XIuH0NIvAZYRbnm5u6H_jF_YB1YpsnqagCTDCLNH5z_AkoW4wA3skt6KtQ-dh9x7_BYL5bFBkOoevVxNFFGgJNBHreL6LBPfPqnbCxH8AvHs
+      baseUrl: https://content.dropboxapi.com/2/files/download
+    kafka:
+      indexer: index-request-v1

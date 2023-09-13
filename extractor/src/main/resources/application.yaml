@@ -1,0 +1,28 @@
+server:
+  port: 9001
+  shutdown: graceful
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: docusearch-extractor
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+
+docusearch:
+  system:
+    kafka:
+      extractor: extractor-request-v1
+      indexer: index-request-v1
+    dropbox:
+      accessToken: sl.Bl_Ty9L7ZHarO0n6V2On08IWygVFepwMG6Sc6eQB5QANuoLiAsiPJk5bH8mU2hRMQfHDD9eClPVURh8ku8b2XNkk2lrDNat02LwZFsa7T2berg9vSfYbXdnr70yFkyHpQbmabTqqOh962b-FlsiNZ2Y
+      baseUrl: https://api.dropboxapi.com
+      downloadUrl: /2/files/download
+      listUrl: /2/files/list_folder
